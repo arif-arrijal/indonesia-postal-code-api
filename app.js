@@ -18,8 +18,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(AuthenticationMiddleware);
-app.use('/', apiRouter);
+
+// public route
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerOptions));
+app.use('/api-key', (req, res, next) => {
+    res.status(200).send({ apiKey: process.env.APP_KEY });
+});
+
+// auth route
+app.use('/', AuthenticationMiddleware, apiRouter);
 
 module.exports = app;

@@ -49,8 +49,4 @@ router.get('/kelurahan/:kecamatan', async function(req, res, next) {
     }
 });
 
-router.get('/api-key', async function(req, res, next) {
-    success(res, { apiKey: process.env.APP_KEY });
-});
-
 module.exports = router;
