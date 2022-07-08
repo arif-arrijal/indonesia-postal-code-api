@@ -87,6 +87,13 @@
         ],
         "responses": {}
       }
+    },
+    "/api-key": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
     }
   }
 }
