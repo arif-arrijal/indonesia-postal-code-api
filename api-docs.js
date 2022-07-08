@@ -5,7 +5,12 @@ var config = {
     host: process.env.APP_URL,
     info: {
         title: 'Indonesian Postal Code API Documentation',
+        description: 'Indonesian Postal Code API Documentation using Swagger. This API is used to get the postal code of the city and province',
         version: '1.0.0',
+        contact: {
+            name: 'Muhamad Arif Ar Rijal',
+            email: 'muhamad.arif.arrijal@gmail.com'
+        }
     },
     schemes: ['https'],
     securityDefinitions: {

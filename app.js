@@ -9,7 +9,7 @@ const { AuthenticationMiddleware } = require('./middlewares/auth.middleware');
 var swaggerUI = require('swagger-ui-express');
 var swaggerDocument = require('./swagger.json');
 var swaggerOptions = {
-    explorer: true,
+    explorer: false,
 };
 
 var app = express();
