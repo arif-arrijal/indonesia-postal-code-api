@@ -1,16 +1,18 @@
 {
   "openapi": "3.0.0",
   "info": {
+    "title": "Indonesian Postal Code API Documentation",
     "version": "1.0.0",
-    "title": "REST API",
     "description": ""
   },
-  "servers": [
-    {
-      "url": "http://localhost:3000/"
-    }
-  ],
   "paths": {
+    "/api-key": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/provinsi": {
       "get": {
         "description": "",
@@ -23,7 +25,16 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
     "/kabupaten/{provinsiId}": {
@@ -46,7 +57,16 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
     "/kecamatan/{kabupaten}": {
@@ -69,7 +89,16 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
     "/kelurahan/{kecamatan}": {
@@ -85,14 +114,26 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
-    },
-    "/api-key": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "API key to access this service"
       }
     }
   }

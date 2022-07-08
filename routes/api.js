@@ -4,6 +4,9 @@ const { ApiService } = require('../services/api.service');
 var router = express.Router();
 
 router.get('/provinsi', async function(req, res, next) {
+    /* #swagger.security = [{
+        "apiKeyAuth": []
+    }] */
     let keyword = req.query.keyword;
 
     let result = await wait(ApiService.getProvinsi(keyword));
@@ -15,6 +18,9 @@ router.get('/provinsi', async function(req, res, next) {
 });
 
 router.get('/kabupaten/:provinsiId', async function(req, res, next) {
+    /* #swagger.security = [{
+        "apiKeyAuth": []
+    }] */
     let provinsiId = req.params.provinsiId;
     let keyword = req.query.keyword;
 
@@ -27,6 +33,9 @@ router.get('/kabupaten/:provinsiId', async function(req, res, next) {
 });
 
 router.get('/kecamatan/:kabupaten', async function(req, res, next) {
+    /* #swagger.security = [{
+        "apiKeyAuth": []
+    }] */
     let kabupaten = req.params.kabupaten;
     let keyword = req.query.keyword;
 
@@ -39,6 +48,9 @@ router.get('/kecamatan/:kabupaten', async function(req, res, next) {
 });
 
 router.get('/kelurahan/:kecamatan', async function(req, res, next) {
+    /* #swagger.security = [{
+        "apiKeyAuth": []
+    }] */
     let kecamatan = req.params.kecamatan;
 
     let result = await wait(ApiService.getKelurahan(kecamatan));

@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var apiRouter = require('./routes/api');
+var apiKeyRouter = require('./routes/api-key');
 const { AuthenticationMiddleware } = require('./middlewares/auth.middleware');
 var swaggerUI = require('swagger-ui-express');
 var swaggerDocument = require('./swagger.json');
@@ -21,9 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // public route
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerOptions));
-app.use('/api-key', (req, res, next) => {
-    res.status(200).send({ apiKey: process.env.APP_KEY });
-});
+app.use('/', apiKeyRouter);
 
 // auth route
 app.use('/', AuthenticationMiddleware, apiRouter);
